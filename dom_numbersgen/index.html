@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Number Generator</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1e1e1e;
+      color: #ffffff;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+    }
+    h1, h2 {
+      color: #ffffff;
+    }
+    .form-group label {
+      color: #ffffff;%C
+    }
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+    .btn-primary:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+    }
+    .footer {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      font-size: 12px;
+      color: #808080;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <h1 class="mb-4">Random Number Generator</h1>
+    <div class="form-group">
+      <label for="min">Minimum:</label>
+      <input type="number" id="min" class="form-control" value="0">
+    </div>
+    <div class="form-group">
+      <label for="max">Maximum:</label>
+      <input type="number" id="max" class="form-control" value="100">
+    </div>
+    <button id="generateBtn" class="btn btn-primary">Generate</button>
+    <hr>
+    <h2>Generated Number:</h2>
+    <p id="generatedNumber"></p>
+  </div>
+  <div class="footer">
+    Developed with <span style="color: #f50930;">&hearts;</span> by DominikVatoo for GitHub Skids
+  </div>
+
+  <script>
+    const generateBtn = document.getElementById('generateBtn');
+    const generatedNumberElement = document.getElementById('generatedNumber');
+
+    generateBtn.addEventListener('click', () => {
+      const min = parseInt(document.getElementById('min').value);
+      const max = parseInt(document.getElementById('max').value);
+
+      if (isNaN(min) || isNaN(max)) {
+        alert("Please enter valid numbers for both minimum and maximum values!");
+        return;
+      }
+
+      if (min >= max) {
+        alert("Maximum value must be greater than minimum value!");
+        return;
+      }
+
+      const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+      generatedNumberElement.textContent = randomNumber;
+    });
+  </script>
+</body>
+</html>
